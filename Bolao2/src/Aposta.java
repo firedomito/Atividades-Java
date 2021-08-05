@@ -15,11 +15,11 @@ public class Aposta {
     }
 
     public void inserirNumeros() {
-
         Scanner s = new Scanner(System.in);
 
         System.out.println("Quantos numeros serão jogados? ");
         int num = s.nextInt();
+
 
         while (this.getNums().size() < num) {
             System.out.println("Digite o Numero: ");
@@ -79,7 +79,6 @@ public class Aposta {
         return inseriuSucesso;
     }
 
-        public void
 
 
 
