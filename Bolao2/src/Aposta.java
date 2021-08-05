@@ -51,7 +51,7 @@ public class Aposta {
             System.out.println("NENHUM JOGADOR CADASTRADO! Cadastre jogadores antes de inserir um organizador");
             return  !inseriuSucesso;
         }
-
+        
         System.out.println("CPF do Organizador: ");
         String cpfOrg = s.nextLine();
 
