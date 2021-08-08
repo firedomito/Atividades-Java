@@ -11,30 +11,12 @@ public class Sistema {
         jogadores = new ArrayList<>();
     }
 
-    public void mostrarMenu(){
-        Scanner s = new Scanner(System.in);
-        System.out.println("1) Cadastrar Jogador");
-        System.out.println("2) Cadastrar Aposta");
-        System.out.println("3) Inserir sorteio e listar vencedores");
-        System.out.println("4) SAIR");
-
-        int selecionar = s.nextInt();
-
-        if (selecionar == 1) cadastrarJogador();
-        if (selecionar == 2) cadastrarAposta();
-        if (selecionar == 3) inserirSorteio();
-        if (selecionar == 4) return;
-
-
-
-    }
 
 
 
     public void cadastrarJogador(){
         this.getJogadores().add(new Jogador());
 
-        mostrarMenu();
 
     }
 
@@ -47,7 +29,6 @@ public class Sistema {
 
         getApostas().add(aposta);
 
-        mostrarMenu();
 
     }
 
@@ -74,8 +55,6 @@ public class Sistema {
         }
 
 
-
-        mostrarMenu();
     }
 
     private ArrayList<Aposta> vencedoras (ArrayList<Integer> nums){
