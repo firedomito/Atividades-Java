@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Aposta {
@@ -18,12 +19,22 @@ public class Aposta {
         System.out.println("Quantos numeros serão jogados? ");
         int num = s.nextInt();
 
+        // Repete até que a quantidade inserida seja completa
         while (this.getNumeros().size() < num) {
             System.out.println("Digite o Numero: ");
             int numerosAposta = s.nextInt();
 
+            // .anyMatch verifica se existe algum numero repetido
+            boolean existeNumRepetido = this.getNumeros().stream().anyMatch(x -> x == numerosAposta );
+
+
             if (numerosAposta >= 1 && numerosAposta <= 60) {
-                this.getNumeros().add(numerosAposta);
+                if (existeNumRepetido){
+                    System.out.println("Numero repetido. DIGITE NOVAMENTE! ");
+                }
+                else {
+                    this.getNumeros().add(numerosAposta);
+                }
             }
             else {
                 System.out.println("Numero não está entre 1 e 60. Tente Novamente!");
@@ -53,6 +64,8 @@ public class Aposta {
         // Variavel de controle de CPF
         boolean encontrouCPF = false;
 
+
+        System.out.println("Jogadores no bilhete");
         // Cada item dos jogadores se torna um jogador
         for (Jogador jogador : jogadores) {
             jogador.listarDados();
@@ -76,17 +89,16 @@ public class Aposta {
     public void inserirJogadores(ArrayList<Jogador> todosJogadores) {
         Scanner s = new Scanner(System.in);
 
-
-
         boolean encontrouCPF = false;
 
         System.out.println("Digite o numero de Jogadores no bilhete: ");
         int NumBilhete = s.nextInt();
 
         for (int i = 1; i <= NumBilhete; i++) {
+            System.out.println("---- JOGADORES CADASTRADOS ----");
             for (Jogador davez : todosJogadores) {
                 System.out.println("Nome: " + davez.nome);
-                System.out.println("CPF: " + davez.cpf);
+                System.out.println("CPF: " + davez.cpf + '\n');
             }
 
             System.out.printf("Informe o CPF do Jogador: ");
@@ -132,13 +144,25 @@ public class Aposta {
 
         premioFinal = (valor - valorOrg) / this.getJogadores().size() ;
 
-        organizador.listarDados();
-        System.out.println("Valor do Premio do Organizador: " + (premioFinal+valorOrg));
 
+        // Caso o organizador da cartela seja um jogador da cartela recebera o valor do premio + 10%
+        if (this.getJogadores().contains(this.getOrganizador())){
+            valorOrg = premioFinal + valorOrg;
+        }
+
+
+        System.out.println("🐱🐺🐶 ORGANIZADOR 🐶🐺🐱");
+        organizador.listarDados();
+
+        // Caso o organizador da cartela NÃO seja um jogador da cartela recebera apenas 10% do valor do premio
+        System.out.println("Valor do Premio do Organizador: " + (valorOrg) + '\n');
+
+
+        System.out.println("🐱🐺🐶 Premio dos jogadores 🐶🐺🐱");
         for (Jogador jogador : this.getJogadores()) {
             if (jogador.getCpf() != organizador.getCpf()){
                 jogador.listarDados();
-                System.out.println("Valor do Premio: " + premioFinal);
+                System.out.println("Valor do Premio: " + premioFinal + '\n');
             }
         }
     }

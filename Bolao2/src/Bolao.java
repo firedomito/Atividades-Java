@@ -5,7 +5,7 @@ public class Bolao {
 
         Scanner s = new Scanner(System.in);
 
-        System.out.println("*** JOGO DO BICHO 2.0 ***");
+        System.out.println("🐱🐺🐶 JOGO DO BICHO 2.0 🐶🐺🐱");
 
         System.out.println("1) Cadastrar Jogador");
         System.out.println("2) Cadastrar Aposta");

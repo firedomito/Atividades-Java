@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Scanner;
 
 public class Sistema {
@@ -50,7 +51,11 @@ public class Sistema {
 
         ArrayList<Aposta> apostasVencedoras = vencedoras(numerosSorteio);
 
+        premio = premio / apostasVencedoras.size();
+
+
         for (Aposta vencedor : apostasVencedoras){
+            System.out.println("##################### CARTELA VENCEDORA ##################### " + '\n');
             vencedor.listarVencedores(premio);
         }
 
