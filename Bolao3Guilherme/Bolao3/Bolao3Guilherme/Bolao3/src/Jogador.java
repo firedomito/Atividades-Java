@@ -1,25 +1,23 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
-public class Jogador extends Pessoa {
+public class Jogador extends Pessoa{
 
     private String pix;
+
     Jogador(){
         super();
         Scanner s = new Scanner(System.in);
+
         System.out.println("Digite seu PIX: ");
         this.setPix(s.nextLine());
+    }
 
-}
-
-    Jogador(String nome, String cpf, String pix) {
+    Jogador(String nome, String cpf, String pix){
         super(nome, cpf);
         this.setPix(pix);
     }
 
-    public void listarDados() {
+    public void listarDados(){
         super.listarDados();
         System.out.println("Pix: " + this.getPix());
     }
@@ -30,11 +28,5 @@ public class Jogador extends Pessoa {
 
     public void setPix(String pix) {
         this.pix = pix;
-    }
-
-    public void salvarArq(BufferedWriter buff) throws IOException {
-        buff.write(this.getNome() + "\n");
-        buff.write(this.getCpf() + "\n");
-        buff.write(this.pix + "\n");
     }
 }

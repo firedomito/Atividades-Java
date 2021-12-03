@@ -1,6 +1,4 @@
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,42 +16,27 @@ public class Aposta {
     public void inserirNumeros() {
         Scanner s = new Scanner(System.in);
 
-        int num = 0;
-
-        while (num < 1) {
-            System.out.println("Quantidade de numeros a serem apostados: ");
-            while (! s.hasNextInt()) {
-                s.next();
-                System.out.println("Apenas numeros! Digite novamente ");
-            }
-            num = s.nextInt();
-        }
+        System.out.println("Quantos numeros serão jogados? ");
+        int num = s.nextInt();
 
         // Repete até que a quantidade inserida seja completa
         while (this.getNumeros().size() < num) {
-            int numerosAposta = 0;
-            while (numerosAposta < 1) {
-                System.out.println("Digite o Numero: ");
-                while (! s.hasNextInt()){
-                    s.next();
-                    System.out.println("Digite apenas numeros!");
-                }
-                numerosAposta = s.nextInt();
-            }
-
-            // maneira encontrada para resolver o erro: local variables referenced from a lambda expression must be final or effectively final
-            int numerosApostados = numerosAposta;
+            System.out.println("Digite o Numero: ");
+            int numerosAposta = s.nextInt();
 
             // .anyMatch verifica se existe algum numero repetido
-            boolean existeNumRepetido = this.getNumeros().stream().anyMatch(x -> x == numerosApostados);
+            boolean existeNumRepetido = this.getNumeros().stream().anyMatch(x -> x == numerosAposta );
 
-            if (numerosApostados >= 1 && numerosApostados <= 60) {
-                if (existeNumRepetido) {
+
+            if (numerosAposta >= 1 && numerosAposta <= 60) {
+                if (existeNumRepetido){
                     System.out.println("Numero repetido. DIGITE NOVAMENTE! ");
-                } else {
-                    this.getNumeros().add(numerosApostados);
                 }
-            } else {
+                else {
+                    this.getNumeros().add(numerosAposta);
+                }
+            }
+            else {
                 System.out.println("Numero não está entre 1 e 60. Tente Novamente!");
             }
         }
@@ -108,20 +91,10 @@ public class Aposta {
 
         boolean encontrouCPF = false;
 
-        int numBilhete = 0;
+        System.out.println("Digite o numero de Jogadores no bilhete: ");
+        int NumBilhete = s.nextInt();
 
-
-        while (numBilhete < 1) {
-                System.out.println("Digite o numero de Jogadores no bilhete: ");
-                while (! s.hasNextInt()) {
-                    s.next();
-                    System.out.println("Apenas numeros! Digite novamente ");
-                }
-                numBilhete = s.nextInt();
-
-            }
-
-        for (int i = 1; i <= numBilhete; i++) {
+        for (int i = 1; i <= NumBilhete; i++) {
             System.out.println("---- JOGADORES CADASTRADOS ----");
             for (Jogador davez : todosJogadores) {
                 System.out.println("Nome: " + davez.nome);
@@ -145,7 +118,6 @@ public class Aposta {
             }
         }
     }
-
 
     public boolean vencedora(ArrayList<Integer> sorteados){
             int acertos = 0;

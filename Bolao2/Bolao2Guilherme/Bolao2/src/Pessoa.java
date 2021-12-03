@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Pessoa {
@@ -43,10 +40,4 @@ public class Pessoa {
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
-
-//    public void salvarArq(BufferedWriter buff)throws IOException{
-//        buff.write(this.nome + "\n");
-//        buff.write(this.cpf + "\n");
-
-
 }

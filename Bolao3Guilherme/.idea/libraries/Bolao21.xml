@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="Bolao21">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Bolao2/Bolao2.zip!/" />
+      <root url="jar://$PROJECT_DIR$/Bolao2/Bolao2Guilherme.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
